@@ -105,7 +105,7 @@ public class BankATMUI {
 
     public void depositSavingsUI(){
         FrameDepositSave.setSize(450, 500);
-        FrameDepositSave.setLayout(new GridLayout(2, 1));
+        FrameDepositSave.setLayout(new GridLayout(3, 1));
         FrameDepositSave.setVisible(true);
         FrameDepositSave.setLocationRelativeTo(null);
         FrameDepositSave.setTitle("Deposit");
@@ -120,6 +120,37 @@ public class BankATMUI {
                 BankATM assObj = new BankATM();
                 float answer = assObj.balance1(Float.parseFloat(AmountFieldDepositSave.getText()));
                 JOptionPane.showMessageDialog(null, "You new balance " +uniChar+answer);
+            }
+        });
+    }
+     JFrame FrameWithdrawSave = new JFrame("window");
+    JButton WithdrawSave = new JButton("Withdraw");
+    //    JLabel Welcome = new JLabel("");
+    JLabel AmountWithSave = new JLabel(" Enter Withdrawal Amount:");
+    JTextField AmountFieldWithSave = new JTextField();
+
+    public void withdrawSavingsUI() {
+        FrameWithdrawSave.setSize(450, 500);
+        FrameWithdrawSave.setLayout(new GridLayout(3, 1));
+        FrameWithdrawSave.setVisible(true);
+        FrameWithdrawSave.setLocationRelativeTo(null);
+        FrameWithdrawSave.setTitle("Withdrawal");
+
+        FrameWithdrawSave.add(AmountWithSave);
+        FrameWithdrawSave.add(AmountFieldWithSave);
+        FrameWithdrawSave.add(WithdrawSave);
+
+        WithdrawSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BankATM assObj = new BankATM();
+                float WithdrawSave = (Float.parseFloat(AmountFieldWithSave.getText()));
+                float solution = assObj.withdrawalBalance(Float.parseFloat(AmountFieldWithSave.getText()));
+                if (WithdrawSave > 20000) {
+                    JOptionPane.showMessageDialog(null, "Withdrawal limit is " + uniChar + "20000");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Your new balance is " + uniChar + solution);
+                }
             }
         });
     }
